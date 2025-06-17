@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 2px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db;
+}
+
+/* Background pattern for main content */
+.world-pattern {
+  /* Original background image */
+  background-image: url("/background-image.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 0;
+  position: relative;
+}
+
+/* New centered background image */
+.world-pattern::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 25%;
+  top: 25%;
+  width: 50%;
+  height: 50%;
+  background-image: url("/red-background.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  z-index: 5;
+}
+
+/* Overlay */
+.world-pattern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #001e33;
+  opacity: 0.5;
+  z-index: 3;
+}
+
+/* Mobile menu animation */
+.mobile-menu-enter {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu-enter-active {
+  transform: translateX(0);
+}
+
+.mobile-menu-exit {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu-exit-active {
+  transform: translateX(-100%);
+}
